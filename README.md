@@ -20,28 +20,6 @@ The algorithm (sweeper.py) works as follow:
 5. If it cannot move to the desired position, mark the position as obstructed in observed map, otherwise mark it as visited.
 5. Go back to step 2
 
-# how to use
-
-```python
-# matrix is a 2d array, with 0 indicating unobstructed, and anything else indicating obstructed
-robot = Robot(matrix, start_position, start_direction)
-sweeper = Sweeper(robot)
-sweeper.sweep()
-```
-
-# complexity
-
-Theoretically, the time complexity of the algorithm is O(N<sup>2</sup>). It need to find at most N unvisited points, and each needs at most N steps to get there. But in practice, since it only find the nearest unvisited position, so it can efficiently do it in O(N).
-
-The space complexity is O(N), to store the observed map.
-
-# optimization
-
-An optimized version of the algorithm, called Spiral BFS, can help to reduce the number of steps taken by 5-10%. When visualizing the algorithm, I found out that the robot occasionally misses the uncleaned part (since it favors moving in one absolute direction), and needs to waste time traveling back. By making the robot favoring turning left (or right), it will minimize the chance of missing uncleaned parts. Two modes can be switched easily by setting `spiral` attribute of the algorithm
-
-```python
-sweeper.spiral = True
-```
 
 # demo
 
